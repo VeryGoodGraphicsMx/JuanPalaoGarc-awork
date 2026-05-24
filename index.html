@@ -4,30 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Juan Palao García — Marketing Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #1A2333;
-    --blue: #5D7FA3;
-    --gold: #D6B36A;
-    --white: #F7F8FA;
-    --gray: #A3ADBA;
-    --light: #EEF1F5;
-    --accent: #D6B36A;
-    --deep: #101826;
-    --card: #243041;
-    --card-hover: #2B394C;
-    --muted-line: rgba(214,179,106,0.22);
+    --bg:     #050505;
+    --bg2:    #0D0D0D;
+    --card:   #111111;
+    --card2:  #181818;
+    --yellow: #F2FF00;
+    --purple: #5E17EB;
+    --white:  #FFFFFF;
+    --gray:   #AAAAAA;
+    --muted:  #555555;
+    --border: rgba(242,255,0,0.15);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
-    background: var(--navy);
+    background: var(--bg);
     color: var(--white);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
   }
@@ -36,25 +33,41 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 48px;
-    background: rgba(10,18,36,0.85);
-    backdrop-filter: blur(12px);
+    padding: 18px 48px;
+    background: rgba(5,5,5,0.92);
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo-mark {
+    width: 32px; height: 32px;
+    background: var(--yellow);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px; color: var(--bg);
+    letter-spacing: 1px;
   }
   .nav-name {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 3px;
-    color: var(--white);
+    font-size: 18px; letter-spacing: 3px; color: var(--white);
   }
-  .nav-name span { color: var(--gold); }
-  .nav-links { display: flex; gap: 32px; }
+  .nav-name span { color: var(--yellow); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
   .nav-links a {
-    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(255,255,255,0.5); text-decoration: none;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.45); text-decoration: none;
     transition: color .2s;
+    font-weight: 500;
   }
-  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover { color: var(--yellow); }
+  .nav-cta {
+    background: var(--yellow) !important;
+    color: var(--bg) !important;
+    padding: 8px 18px;
+    font-weight: 700 !important;
+  }
 
   /* ── HERO ── */
   .hero {
@@ -62,119 +75,153 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    padding: 120px 48px 80px;
+    padding: 110px 48px 80px;
     position: relative;
     overflow: hidden;
+    gap: 40px;
   }
   .hero::before {
     content: '';
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(93,127,163,0.24) 0%, transparent 70%);
+    background:
+      radial-gradient(ellipse 50% 60% at 75% 50%, rgba(94,23,235,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 40% at 20% 80%, rgba(242,255,0,0.06) 0%, transparent 60%);
     pointer-events: none;
   }
   .hero-grid-bg {
     position: absolute; inset: 0; pointer-events: none;
     background-image:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   .hero-left { position: relative; z-index: 2; }
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold);
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--yellow);
     margin-bottom: 24px;
     display: flex; align-items: center; gap: 12px;
   }
-  .hero-eyebrow::before {
-    content: ''; width: 40px; height: 1px; background: var(--gold);
-  }
+  .hero-eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--yellow); }
   h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(60px, 8vw, 110px);
-    line-height: .95;
-    letter-spacing: 2px;
-    margin-bottom: 32px;
+    font-size: clamp(64px, 8vw, 112px);
+    line-height: .92;
+    letter-spacing: 1px;
+    margin-bottom: 28px;
   }
-  h1 em { color: var(--gold); font-style: normal; }
+  h1 em { color: var(--yellow); font-style: normal; }
   .hero-desc {
-    font-size: 16px; line-height: 1.7;
-    color: rgba(255,255,255,0.6);
-    max-width: 420px;
-    margin-bottom: 40px;
+    font-size: 15px; line-height: 1.75;
+    color: rgba(255,255,255,0.55);
+    max-width: 440px;
+    margin-bottom: 36px;
+    font-weight: 300;
   }
   .hero-stats {
-    display: flex; gap: 40px; margin-bottom: 48px;
+    display: flex; gap: 36px; margin-bottom: 44px;
   }
-  .stat-item { }
   .stat-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px; color: var(--gold);
-    line-height: 1;
+    font-size: 40px; color: var(--yellow); line-height: 1;
   }
   .stat-label {
-    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-top: 4px;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-top: 4px; font-weight: 500;
   }
-  .hero-cta {
-    display: inline-flex; align-items: center; gap: 12px;
-    background: var(--gold); color: var(--navy);
-    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    padding: 16px 32px;
-    text-decoration: none;
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--yellow); color: var(--bg);
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 14px 28px; text-decoration: none;
     transition: transform .2s, box-shadow .2s;
   }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(214,179,106,0.28); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(242,255,0,0.25); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent; color: var(--white);
+    font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    padding: 14px 28px; text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+  /* ── HERO RIGHT — VGG Brand Visual ── */
   .hero-right {
     position: relative; z-index: 2;
     display: flex; justify-content: center; align-items: center;
   }
-  .hero-img-wrap {
+  .vgg-hero-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 48px 40px;
     position: relative;
-    width: 100%; max-width: 500px;
+    width: 100%;
+    max-width: 460px;
   }
-  .hero-img-wrap img {
-    width: 100%; display: block;
-    filter: drop-shadow(0 40px 80px rgba(93,127,163,0.35));
-    animation: float 6s ease-in-out infinite;
+  .vgg-hero-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--yellow), var(--purple));
   }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-16px); }
-  }
-  .hero-badge {
-    position: absolute; bottom: -20px; right: 0;
-    background: var(--gold); color: var(--navy);
+  .vgg-logo-big {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px; letter-spacing: 2px;
-    padding: 12px 20px;
-    white-space: nowrap;
+    font-size: 72px; color: var(--yellow);
+    line-height: .9; letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .vgg-tagline {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); margin-bottom: 32px;
+    font-weight: 500;
+  }
+  .vgg-chips {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+  }
+  .vgg-chip {
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--yellow); border: 1px solid var(--border);
+    padding: 5px 10px; font-weight: 600;
+  }
+  .vgg-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--yellow); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: gap .2s;
+  }
+  .vgg-link:hover { gap: 14px; }
+  .vgg-badge {
+    position: absolute; bottom: -1px; right: -1px;
+    background: var(--yellow); color: var(--bg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px; letter-spacing: 2px;
+    padding: 8px 16px;
   }
 
   /* ── SECTIONS ── */
-  section { padding: 100px 48px; }
+  section { padding: 96px 48px; }
   .section-label {
     font-family: 'DM Mono', monospace;
-    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 12px;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
   }
-  .section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+  .section-label::before { content: ''; width: 28px; height: 1px; background: var(--yellow); }
   h2 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 5vw, 72px);
-    line-height: 1;
-    letter-spacing: 2px;
-    margin-bottom: 16px;
+    font-size: clamp(40px, 5vw, 70px);
+    line-height: 1; letter-spacing: 1px;
+    margin-bottom: 14px;
   }
-  h2 em { color: var(--gold); font-style: normal; }
+  h2 em { color: var(--yellow); font-style: normal; }
   .section-intro {
-    font-size: 16px; color: rgba(255,255,255,0.5);
-    max-width: 600px; line-height: 1.7;
-    margin-bottom: 64px;
+    font-size: 15px; color: rgba(255,255,255,0.45);
+    max-width: 580px; line-height: 1.75; margin-bottom: 56px;
   }
 
   /* ── PROJECT CARDS ── */
@@ -184,471 +231,230 @@
     gap: 2px;
   }
   .project-card {
-    position: relative; overflow: hidden;
-    cursor: pointer;
-    background: var(--card);
+    position: relative; overflow: hidden; cursor: pointer;
+    background: var(--card); min-height: 280px;
   }
   .project-card:nth-child(1) { grid-column: span 7; }
   .project-card:nth-child(2) { grid-column: span 5; }
   .project-card:nth-child(3) { grid-column: span 4; }
   .project-card:nth-child(4) { grid-column: span 8; }
-  .project-card:nth-child(5) { grid-column: span 12; }
-
-  .project-img {
-    width: 100%; aspect-ratio: 4/3;
-    object-fit: cover; object-position: top;
-    display: block;
-    transition: transform .6s cubic-bezier(.16,1,.3,1), filter .6s;
-    filter: grayscale(20%) brightness(0.8);
+  .project-card:nth-child(5) { grid-column: span 12; min-height: 200px; }
+  .proj-bg {
+    position: absolute; inset: 0;
+    transition: transform .6s cubic-bezier(.16,1,.3,1);
   }
-  .project-card:nth-child(1) .project-img,
-  .project-card:nth-child(4) .project-img { aspect-ratio: 16/9; }
-  .project-card:nth-child(5) .project-img { aspect-ratio: 21/6; object-position: center 30%; }
-
-  .project-card:hover .project-img {
-    transform: scale(1.04);
-    filter: grayscale(0%) brightness(0.6);
-  }
+  .project-card:hover .proj-bg { transform: scale(1.04); }
   .project-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(10,18,36,.96) 0%, rgba(10,18,36,.3) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(5,5,5,.97) 0%, rgba(5,5,5,.4) 55%, transparent 100%);
     display: flex; flex-direction: column; justify-content: flex-end;
     padding: 28px;
-    transition: opacity .3s;
   }
   .proj-tag {
     font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 8px;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 8px;
   }
   .proj-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(20px, 2.5vw, 32px);
-    letter-spacing: 1px;
-    line-height: 1.1;
-    margin-bottom: 8px;
+    font-size: clamp(22px, 2.5vw, 34px);
+    letter-spacing: 1px; line-height: 1.05; margin-bottom: 8px;
   }
   .proj-desc {
-    font-size: 13px; color: rgba(255,255,255,0.55);
-    line-height: 1.5; max-width: 400px;
+    font-size: 12px; color: rgba(255,255,255,0.5);
+    line-height: 1.55; max-width: 420px;
     display: none;
   }
   .project-card:hover .proj-desc { display: block; }
-  .proj-metrics {
-    display: flex; gap: 20px; margin-top: 12px;
-    flex-wrap: wrap;
-  }
+  .proj-metrics { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
   .metric-chip {
     font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 1px;
-    color: var(--gold);
-    border: 1px solid rgba(214,179,106,0.28);
-    padding: 4px 10px;
+    font-size: 9px; letter-spacing: 1px;
+    color: var(--yellow);
+    border: 1px solid var(--border);
+    padding: 3px 9px;
   }
 
-  /* ── STRATEGY SECTION ── */
-  #strategy { background: var(--deep); }
-  .strategy-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-    align-items: start;
-  }
-  .strategy-visual {
-    position: relative;
-  }
-  .funnel-wrap {
-    position: relative; padding: 40px 0;
-  }
+  /* ── STRATEGY ── */
+  #strategy { background: var(--bg2); }
+  .strategy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .funnel-wrap { padding: 32px 0; }
   .funnel-stage {
-    position: relative;
-    margin: 0 auto 3px;
-    height: 56px;
-    display: flex; align-items: center; justify-content: center;
+    position: relative; margin: 0 auto 2px;
+    height: 52px; display: flex; align-items: center; justify-content: center;
     clip-path: polygon(4% 0%, 96% 0%, 100% 100%, 0% 100%);
     transition: transform .2s;
   }
   .funnel-stage:hover { transform: scaleX(1.02); }
-  .funnel-stage:nth-child(1) { width: 100%; background: var(--blue); }
-  .funnel-stage:nth-child(2) { width: 87%; background: #6E8FB2; }
-  .funnel-stage:nth-child(3) { width: 74%; background: #7EA0C5; }
-  .funnel-stage:nth-child(4) { width: 58%; background: var(--gold); }
-  .funnel-stage:nth-child(5) { width: 38%; background: #C7A158; }
+  .funnel-stage:nth-child(1) { width: 100%; background: #1a1a1a; border-left: 3px solid var(--yellow); }
+  .funnel-stage:nth-child(2) { width: 87%; background: #161616; border-left: 3px solid rgba(242,255,0,.7); }
+  .funnel-stage:nth-child(3) { width: 74%; background: #131313; border-left: 3px solid rgba(242,255,0,.5); }
+  .funnel-stage:nth-child(4) { width: 58%; background: var(--yellow); }
+  .funnel-stage:nth-child(5) { width: 38%; background: #d4e000; }
   .funnel-text {
     font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--white); font-weight: 500;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); font-weight: 500;
   }
   .funnel-stage:nth-child(4) .funnel-text,
-  .funnel-stage:nth-child(5) .funnel-text { color: var(--navy); }
-  .funnel-label {
-    position: absolute; right: -120px; top: 50%; transform: translateY(-50%);
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; color: rgba(255,255,255,0.4);
-    white-space: nowrap;
-  }
-
-  .strategy-content {}
+  .funnel-stage:nth-child(5) .funnel-text { color: var(--bg); }
   .strategy-point {
-    border-left: 2px solid rgba(214,179,106,0.20);
-    padding: 24px 0 24px 28px;
-    margin-bottom: 4px;
+    border-left: 2px solid rgba(242,255,0,0.12);
+    padding: 22px 0 22px 24px; margin-bottom: 4px;
     transition: border-color .2s;
   }
-  .strategy-point:hover { border-color: var(--gold); }
-  .sp-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 2px; color: var(--gold);
-    margin-bottom: 6px;
-  }
-  .sp-title {
-    font-size: 18px; font-weight: 500;
-    margin-bottom: 6px;
-  }
-  .sp-body {
-    font-size: 13px; color: rgba(255,255,255,0.5);
-    line-height: 1.6;
-  }
+  .strategy-point:hover { border-color: var(--yellow); }
+  .sp-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--yellow); margin-bottom: 6px; }
+  .sp-title { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+  .sp-body { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
 
   /* ── METRICS ── */
-  #metrics { background: var(--navy); }
-  .metrics-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-    margin-bottom: 80px;
-  }
+  #metrics { background: var(--bg); }
+  .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-bottom: 72px; }
   .metric-card {
-    background: var(--card);
-    padding: 40px 32px;
+    background: var(--card); padding: 36px 28px;
     position: relative; overflow: hidden;
+    border-top: 2px solid transparent;
+    transition: border-color .3s;
   }
-  .metric-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: var(--gold);
-    transform: scaleX(0); transform-origin: left;
-    transition: transform .4s ease;
-  }
-  .metric-card:hover::before { transform: scaleX(1); }
-  .metric-big {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 64px; color: var(--gold);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .metric-title { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
-  .metric-note { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
-  .metric-trend {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 1px;
-    color: #4ade80;
-    margin-top: 12px;
-    padding: 4px 8px;
-    background: rgba(74,222,128,0.1);
-  }
+  .metric-card:hover { border-color: var(--yellow); }
+  .metric-big { font-family: 'Bebas Neue', sans-serif; font-size: 60px; color: var(--yellow); line-height: 1; margin-bottom: 8px; }
+  .metric-title { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .metric-note { font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.55; }
+  .metric-trend { display: inline-flex; align-items: center; gap: 4px; font-family: 'DM Mono', monospace; font-size: 9px; color: #4ade80; margin-top: 12px; padding: 3px 8px; background: rgba(74,222,128,0.08); }
 
   /* ── ROADMAP ── */
-  #roadmap { background: var(--deep); }
-  .roadmap-track {
-    position: relative;
-    padding: 40px 0;
-  }
-  .roadmap-line {
-    position: absolute; top: 80px; left: 0; right: 0; height: 1px;
-    background: rgba(214,179,106,0.20);
-  }
-  .roadmap-items {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-  }
-  .rm-item {
-    padding: 0 32px 40px 0;
-    position: relative;
-  }
-  .rm-dot {
-    width: 12px; height: 12px;
-    background: var(--gold);
-    margin-bottom: 24px;
-    position: relative;
-  }
-  .rm-dot::before {
-    content: '';
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    width: 24px; height: 24px;
-    border: 1px solid rgba(214,179,106,0.28);
-  }
-  .rm-phase {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 8px;
-  }
-  .rm-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px; letter-spacing: 1px;
-    margin-bottom: 12px;
-  }
+  #roadmap { background: var(--bg2); }
+  .roadmap-items { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 8px; }
+  .rm-item { background: var(--card); padding: 36px 32px; position: relative; }
+  .rm-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--yellow); }
+  .rm-item:nth-child(2)::before { background: var(--purple); }
+  .rm-item:nth-child(3)::before { background: linear-gradient(90deg, var(--purple), var(--yellow)); }
+  .rm-phase { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--yellow); margin-bottom: 8px; text-transform: uppercase; }
+  .rm-item:nth-child(2) .rm-phase { color: #a78bfa; }
+  .rm-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; margin-bottom: 16px; }
   .rm-list { list-style: none; }
-  .rm-list li {
-    font-size: 13px; color: rgba(255,255,255,0.55);
-    padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
-    display: flex; align-items: flex-start; gap: 8px;
-    line-height: 1.4;
-  }
-  .rm-list li::before { content: '→'; color: var(--gold); font-size: 10px; flex-shrink: 0; margin-top: 2px; }
-  .rm-target {
-    margin-top: 16px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; color: var(--gold);
-    border: 1px solid rgba(214,179,106,0.25);
-    padding: 8px 14px;
-    display: inline-block;
-  }
+  .rm-list li { font-size: 12px; color: rgba(255,255,255,0.5); padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: flex-start; gap: 8px; line-height: 1.45; }
+  .rm-list li::before { content: '→'; color: var(--yellow); font-size: 10px; flex-shrink: 0; margin-top: 1px; }
+  .rm-target { margin-top: 18px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--yellow); border: 1px solid var(--border); padding: 7px 12px; display: inline-block; }
 
   /* ── SKILLS ── */
-  #skills { background: var(--navy); }
-  .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-  .skill-group { margin-bottom: 40px; }
-  .skill-group-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(255,255,255,0.3); margin-bottom: 20px;
-  }
+  #skills { background: var(--bg); }
+  .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+  .skill-group { margin-bottom: 36px; }
+  .skill-group-title { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 20px; }
   .skill-bar-wrap { margin-bottom: 14px; }
-  .skill-name {
-    display: flex; justify-content: space-between;
-    font-size: 13px; color: rgba(255,255,255,0.7);
-    margin-bottom: 6px;
-  }
-  .skill-name span { color: var(--gold); font-family: 'DM Mono', monospace; font-size: 11px; }
-  .skill-track {
-    height: 2px; background: rgba(255,255,255,0.08);
-    position: relative;
-  }
-  .skill-fill {
-    height: 100%; background: var(--gold);
-    transform-origin: left;
-    animation: fillBar 1s cubic-bezier(.16,1,.3,1) forwards;
-    transform: scaleX(0);
-  }
+  .skill-name { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.65); margin-bottom: 6px; font-weight: 400; }
+  .skill-name span { color: var(--yellow); font-family: 'DM Mono', monospace; font-size: 10px; }
+  .skill-track { height: 2px; background: rgba(255,255,255,0.06); }
+  .skill-fill { height: 100%; background: var(--yellow); transform-origin: left; animation: fillBar 1.2s cubic-bezier(.16,1,.3,1) forwards; transform: scaleX(0); }
   @keyframes fillBar { to { transform: scaleX(1); } }
+  .tools-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tool-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.08); padding: 7px 14px; transition: border-color .2s, color .2s; }
+  .tool-tag:hover { border-color: var(--yellow); color: var(--yellow); }
 
-  .tools-grid {
-    display: flex; flex-wrap: wrap; gap: 10px;
-  }
-  .tool-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; letter-spacing: 1px;
-    color: rgba(255,255,255,0.6);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 8px 16px;
-    transition: border-color .2s, color .2s;
-  }
-  .tool-tag:hover { border-color: var(--gold); color: var(--gold); }
+  /* ── MANPOWER ── */
+  #manpower { background: var(--bg2); }
+  .mp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .mp-results { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 36px; }
+  .mp-result { background: var(--card); padding: 24px; }
+  .mp-result-num { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: var(--yellow); line-height: 1; }
+  .mp-result-label { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
 
-  /* ── MANPOWER SECTION ── */
-  #manpower { background: var(--deep); }
-  .mp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .mp-content {}
-  .mp-results {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
-    margin-top: 40px;
-  }
-  .mp-result {
-    background: var(--card); padding: 28px;
-  }
-  .mp-result-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px; color: var(--gold); line-height: 1;
-  }
-  .mp-result-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; }
-  .mp-visual {
-    position: relative;
-  }
-  .mp-visual img { width: 100%; border-radius: 0; display: block; filter: brightness(0.85); }
-  .mp-tag {
-    position: absolute; top: 20px; left: 20px;
-    background: var(--gold); color: var(--navy);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14px; letter-spacing: 2px;
-    padding: 8px 16px;
-  }
+  /* ── ECOSYSTEM ── */
+  #ecosystem { background: var(--bg); }
+  .eco-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .eco-card { background: var(--card); padding: 36px 32px; position: relative; overflow: hidden; transition: background .3s; border-top: 2px solid transparent; }
+  .eco-card:hover { background: var(--card2); border-color: var(--yellow); }
+  .eco-icon { font-size: 28px; margin-bottom: 16px; }
+  .eco-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; margin-bottom: 8px; }
+  .eco-body { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; margin-bottom: 20px; }
+  .eco-link { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--yellow); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: gap .2s; }
+  .eco-link:hover { gap: 14px; }
 
-  /* ── LINKS / ECOSYSTEM ── */
-  #ecosystem { background: var(--navy); }
-  .eco-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-  .eco-card {
-    background: var(--card); padding: 40px 36px;
-    position: relative; overflow: hidden;
-    transition: background .3s;
-  }
-  .eco-card:hover { background: var(--card-hover); }
-  .eco-icon {
-    font-size: 32px; margin-bottom: 20px;
-  }
-  .eco-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px; letter-spacing: 1px;
-    margin-bottom: 10px;
-  }
-  .eco-body { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 20px; }
-  .eco-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--gold); text-decoration: none;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .eco-link:hover { opacity: .7; }
-  .eco-arrow { transition: transform .2s; }
-  .eco-link:hover .eco-arrow { transform: translateX(4px); }
+  /* ── SOCIAL ── */
+  #socials { background: var(--bg2); }
+  .socials-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .social-block { background: var(--card); padding: 44px 38px; position: relative; min-height: 420px; border-top: 3px solid var(--yellow); }
+  .social-block:nth-child(2) { border-color: var(--purple); }
+  .social-status { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+  .social-block:nth-child(2) .social-status { color: #a78bfa; }
+  .social-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 3.5vw, 48px); line-height: 1; letter-spacing: 1px; margin-bottom: 16px; }
+  .social-copy { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; }
+  .social-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .social-chip { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.1); padding: 6px 10px; }
+  .social-chip.is-yellow { color: var(--yellow); border-color: var(--border); }
+  .social-chip.is-purple { color: #a78bfa; border-color: rgba(94,23,235,0.3); }
+  .social-mini-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 24px; }
+  .social-mini { background: rgba(255,255,255,0.03); padding: 18px 14px; }
+  .social-mini-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--yellow); line-height: 1; }
+  .social-block:nth-child(2) .social-mini-num { color: #a78bfa; }
+  .social-mini-label { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 4px; line-height: 1.4; }
+  .social-link { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--yellow); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: gap .2s; }
+  .social-link:hover { gap: 14px; }
+  .social-block:nth-child(2) .social-link { color: #a78bfa; }
 
-
-
-  /* ── SOCIAL MEDIA ── */
-  #socials { background: var(--navy); }
-  .socials-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-  .social-block {
+  /* ── DOWNLOAD SECTION ── */
+  #download { background: var(--bg); }
+  .download-wrap {
     background: var(--card);
-    padding: 44px 38px;
-    position: relative;
-    overflow: hidden;
-    min-height: 420px;
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 60px 56px;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
+    position: relative; overflow: hidden;
   }
-  .social-block::before {
+  .download-wrap::before {
     content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 2px;
-    background: var(--gold);
-    opacity: .8;
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--yellow), var(--purple));
   }
-  .social-status {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 12px;
+  .download-left {}
+  .download-title { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 1px; margin-bottom: 8px; }
+  .download-sub { font-size: 14px; color: rgba(255,255,255,0.45); }
+  .btn-download {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--yellow); color: var(--bg);
+    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 18px 36px; text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    white-space: nowrap; flex-shrink: 0;
   }
-  .social-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(32px, 4vw, 54px);
-    line-height: 1;
-    letter-spacing: 1.5px;
-    margin-bottom: 18px;
-  }
-  .social-copy {
-    font-size: 14px;
-    color: rgba(255,255,255,0.58);
-    line-height: 1.7;
-    margin-bottom: 28px;
-    max-width: 520px;
-  }
-  .social-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-  .social-chip {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.66);
-    border: 1px solid rgba(255,255,255,0.12);
-    padding: 8px 12px;
-    background: rgba(255,255,255,0.025);
-  }
-  .social-chip.is-gold {
-    color: var(--gold);
-    border-color: rgba(214,179,106,.35);
-  }
-  .social-mini-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    margin-top: 28px;
-  }
-  .social-mini {
-    background: rgba(255,255,255,0.035);
-    padding: 20px 16px;
-  }
-  .social-mini-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 30px;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .social-mini-label {
-    font-size: 11px;
-    color: rgba(255,255,255,0.45);
-    margin-top: 6px;
-    line-height: 1.4;
-  }
-  .social-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .social-link:hover { opacity: .72; }
+  .btn-download:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(242,255,0,0.25); }
+  .btn-download svg { width: 18px; height: 18px; fill: var(--bg); }
 
   /* ── FOOTER ── */
   footer {
-    background: var(--deep);
-    padding: 60px 48px;
+    background: #000;
+    padding: 52px 48px;
     display: flex; align-items: center; justify-content: space-between;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    border-top: 1px solid rgba(255,255,255,0.04);
   }
-  .footer-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px; letter-spacing: 3px;
-  }
-  .footer-name span { color: var(--gold); }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a {
-    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(255,255,255,0.4); text-decoration: none;
-    transition: color .2s;
-  }
-  .footer-links a:hover { color: var(--gold); }
-  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-mark { width: 28px; height: 28px; background: var(--yellow); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--bg); }
+  .footer-name { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px; }
+  .footer-name span { color: var(--yellow); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--yellow); }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.15); }
 
   /* ── DIVIDER ── */
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(214,179,106,0.20), transparent);
-    margin: 0 48px;
-  }
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(242,255,0,0.12), transparent); margin: 0 48px; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
+    nav { padding: 14px 20px; }
     .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 40px; }
+    .hero { grid-template-columns: 1fr; padding: 90px 20px 56px; gap: 32px; }
     .hero-right { display: none; }
-    section { padding: 60px 24px; }
-    .project-card:nth-child(1),
-    .project-card:nth-child(2),
-    .project-card:nth-child(3),
-    .project-card:nth-child(4),
-    .project-card:nth-child(5) { grid-column: span 12; }
+    section { padding: 56px 20px; }
+    .projects-grid .project-card { grid-column: span 12 !important; }
     .metrics-grid { grid-template-columns: 1fr 1fr; }
-    .strategy-grid, .skills-layout, .mp-grid, .roadmap-items { grid-template-columns: 1fr; gap: 40px; }
+    .strategy-grid, .skills-layout, .mp-grid, .roadmap-items, .socials-layout { grid-template-columns: 1fr; gap: 32px; }
     .eco-grid { grid-template-columns: 1fr; }
-    .socials-layout, .social-mini-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 24px; text-align: center; }
-    .funnel-label { display: none; }
-    .hero-stats { gap: 24px; }
+    footer { flex-direction: column; gap: 20px; text-align: center; }
+    .download-wrap { flex-direction: column; padding: 40px 28px; }
+    .hero-stats { gap: 20px; }
   }
 </style>
 </head>
@@ -656,7 +462,10 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-name">JUAN PALAO<span>.</span></div>
+  <div class="nav-logo">
+    <div class="nav-logo-mark">JP</div>
+    <div class="nav-name">JUAN PALAO<span>.</span></div>
+  </div>
   <div class="nav-links">
     <a href="#projects">Projects</a>
     <a href="#strategy">Strategy</a>
@@ -664,6 +473,7 @@
     <a href="#roadmap">Roadmap</a>
     <a href="#ecosystem">Ecosystem</a>
     <a href="#socials">Social</a>
+    <a href="https://www.behance.net/juanpalaogarcia" target="_blank" class="nav-cta">Behance →</a>
   </div>
 </nav>
 
@@ -688,17 +498,25 @@
         <div class="stat-label">Campaigns / Year</div>
       </div>
     </div>
-    <a href="https://juanpalaogarcia.com/very-good-graphics/" target="_blank" class="hero-cta">View Full Portfolio →</a>
+    <div class="hero-ctas">
+      <a href="https://www.behance.net/juanpalaogarcia" target="_blank" class="btn-primary">View Visual Work on Behance →</a>
+      <a href="https://www.verygoodgraphics.mx/" target="_blank" class="btn-outline">Creative Studio →</a>
+    </div>
   </div>
   <div class="hero-right">
-    <div class="hero-img-wrap">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/320px-Camponotus_flavomarginatus_ant.jpg"
-           onerror="this.style.display='none'"
-           alt="AMITAI Rebrand"
-           style="width:400px;height:400px;object-fit:contain;filter:drop-shadow(0 0 80px rgba(93,127,163,.45)) drop-shadow(0 0 20px rgba(214,179,106,.28));background:transparent;animation:float 6s ease-in-out infinite;">
-      <!-- Fallback brand logo display -->
-      <div style="width:400px;height:400px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:80px;color:var(--gold);letter-spacing:4px;text-shadow:0 0 80px rgba(93,127,163,.55);">AM</div>
-      <div class="hero-badge">AMITAI · NUEVA IDENTIDAD 2026</div>
+    <div class="vgg-hero-card">
+      <div class="vgg-logo-big">VERY<br>GOOD<br>GRAPHICS</div>
+      <div class="vgg-tagline">Diseño que comunica · Estrategia que vende</div>
+      <div class="vgg-chips">
+        <span class="vgg-chip">Branding</span>
+        <span class="vgg-chip">Web Design</span>
+        <span class="vgg-chip">Social Media</span>
+        <span class="vgg-chip">Art Direction</span>
+        <span class="vgg-chip">Motion</span>
+        <span class="vgg-chip">Photography</span>
+      </div>
+      <a href="https://www.verygoodgraphics.mx/" target="_blank" class="vgg-link">verygoodgraphics.mx <span>→</span></a>
+      <div class="vgg-badge">VGG · Est. 2018</div>
     </div>
   </div>
 </section>
@@ -715,53 +533,44 @@
 
     <!-- PROJECT 1 — AMITAI Rebrand -->
     <div class="project-card">
-      <img class="project-img"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png"
-        onerror="this.style.background='var(--card)';this.style.minHeight='300px';"
-        alt="AMITAI Rebrand"
-        style="background:var(--card); min-height:300px; object-fit:cover;">
-      <!-- Using actual brand images via data URIs or hosted paths isn't viable here, so we use styled fallbacks -->
-      <div style="position:absolute;inset:0;background:linear-gradient(135deg,var(--blue) 0%,var(--navy) 60%,var(--deep) 100%);display:flex;align-items:center;justify-content:center;">
+      <div class="proj-bg" style="background:linear-gradient(135deg,#0B1A3E 0%,#162244 50%,#0a1020 100%);display:flex;align-items:center;justify-content:center;">
         <div style="text-align:center;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:72px;color:var(--gold);letter-spacing:6px;line-height:1;">AMITAI</div>
-          <div style="font-size:12px;letter-spacing:4px;color:rgba(255,255,255,.5);margin-top:4px;">HUMAN RISK INTELLIGENCE</div>
-          <div style="width:60px;height:2px;background:var(--gold);margin:16px auto;"></div>
-          <div style="font-size:11px;letter-spacing:2px;color:var(--gold);">NUEVA IDENTIDAD 2026</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:80px;color:#F2FF00;letter-spacing:6px;line-height:.9;opacity:.9;">AMITAI</div>
+          <div style="font-size:11px;letter-spacing:4px;color:rgba(255,255,255,.4);margin-top:6px;">HUMAN RISK INTELLIGENCE</div>
+          <div style="width:48px;height:2px;background:#F2FF00;margin:14px auto;"></div>
+          <div style="font-size:10px;letter-spacing:3px;color:#F2FF00;opacity:.8;">NUEVA IDENTIDAD 2026</div>
         </div>
       </div>
       <div class="project-overlay">
         <div class="proj-tag">Brand Strategy · Art Direction · Campaign Architecture</div>
         <div class="proj-title">AMITAI Full Rebrand<br>& Go-to-Market</div>
-        <div class="proj-desc">Complete brand transformation — visual identity, corporate stationery, signage system, digital assets, app icon, and launch campaign. The rebrand repositions AMITAI as the leading Human Risk Intelligence platform in LATAM, built to drive a new commercial chapter.</div>
+        <div class="proj-desc">Complete brand transformation — visual identity, corporate stationery, signage system, digital assets, app icon, and launch campaign. Repositions AMITAI as the leading Human Risk Intelligence platform in LATAM.</div>
         <div class="proj-metrics">
           <span class="metric-chip">Nueva identidad 2026</span>
-          <span class="metric-chip">+30% brand recall (target)</span>
+          <span class="metric-chip">+30% brand recall</span>
           <span class="metric-chip">Full stationery system</span>
-          <span class="metric-chip">Señalética corporativa</span>
         </div>
       </div>
     </div>
 
-    <!-- PROJECT 2 — Empresas + Éticas Web -->
+    <!-- PROJECT 2 — Empresas + Éticas -->
     <div class="project-card">
-      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 60%,#111 100%);display:flex;align-items:center;justify-content:center;">
+      <div class="proj-bg" style="background:#0f0f0f;display:flex;align-items:center;justify-content:center;">
         <div style="text-align:center;">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;width:80px;height:80px;margin:0 auto 16px;">
-            <div style="background:#E86C2C;"></div>
-            <div style="background:#28A06A;"></div>
-            <div style="background:#2B6ED4;"></div>
-            <div style="background:#D43A2B;"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;width:72px;height:72px;margin:0 auto 14px;">
+            <div style="background:#E86C2C;"></div><div style="background:#28A06A;"></div>
+            <div style="background:#2B6ED4;"></div><div style="background:#D43A2B;"></div>
           </div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:#fff;">EMPRESAS + ÉTICAS</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;">EMPRESAS + ÉTICAS</div>
         </div>
       </div>
       <div class="project-overlay">
-        <div class="proj-tag">UX Strategy · SEO Architecture · AI Search Optimization</div>
+        <div class="proj-tag">UX Strategy · SEO · AI Search Optimization</div>
         <div class="proj-title">Empresas + Éticas<br>Web Redesign</div>
-        <div class="proj-desc">Full UX restructure of the Empresas + Éticas platform. Rebuilt for AI search indexing (SGE/AEO), responsive navigation, and clear hierarchy. Optimized for visibility in both traditional and AI-powered search engines.</div>
+        <div class="proj-desc">Full UX restructure rebuilt for Answer Engine Optimization (AEO) — targeting Google and AI-powered search (ChatGPT, Perplexity, Google SGE).</div>
         <div class="proj-metrics">
           <span class="metric-chip">SEO + AEO ready</span>
-          <span class="metric-chip">+45% organic (target)</span>
+          <span class="metric-chip">+45% organic target</span>
           <span class="metric-chip">Mobile-first</span>
         </div>
       </div>
@@ -769,15 +578,15 @@
 
     <!-- PROJECT 3 — Diagnostico Tool -->
     <div class="project-card">
-      <div style="position:absolute;inset:0;background:linear-gradient(135deg,var(--deep) 0%,var(--blue) 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
-        <div style="font-size:40px;">🔍</div>
-        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--gold);text-align:center;">LEAD-GEN TOOL</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;text-align:center;">DIAGNÓSTICO<br>EXPRESS</div>
+      <div class="proj-bg" style="background:linear-gradient(135deg,#050505 0%,#1a0a3a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;">
+        <div style="font-size:36px;">🔍</div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:#F2FF00;">LEAD-GEN TOOL</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;text-align:center;">DIAGNÓSTICO<br>EXPRESS</div>
       </div>
       <div class="project-overlay">
-        <div class="proj-tag">Lead Generation · Conversion Tool · CRO</div>
+        <div class="proj-tag">Lead Generation · Conversion · CRO</div>
         <div class="proj-title">AI-Powered Lead<br>Capture Tool</div>
-        <div class="proj-desc">Interactive diagnostic built on Netlify — 6-question funnel that qualifies leads in real time and feeds directly to CRM. Designed and deployed to generate top-of-funnel engagement at scale.</div>
+        <div class="proj-desc">6-question funnel on Netlify that qualifies and scores leads in real time, feeding directly to HubSpot CRM.</div>
         <div class="proj-metrics">
           <span class="metric-chip">Live on Netlify</span>
           <span class="metric-chip">CRM-integrated</span>
@@ -788,48 +597,45 @@
 
     <!-- PROJECT 4 — AMITAI Web Ecosystem -->
     <div class="project-card">
-      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0a1830 0%,var(--blue) 40%,#0a1830 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:4px;color:var(--gold);">COMMERCIAL ECOSYSTEM</div>
-        <div style="display:flex;gap:16px;align-items:center;">
-          <div style="width:48px;height:48px;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);">WEB</div>
-          <div style="color:rgba(255,255,255,.4);font-size:20px;">→</div>
-          <div style="width:48px;height:48px;border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:20px;">⚡</div>
-          <div style="color:rgba(255,255,255,.4);font-size:20px;">→</div>
-          <div style="width:48px;height:48px;border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:20px;">💼</div>
-          <div style="color:rgba(255,255,255,.4);font-size:20px;">→</div>
-          <div style="width:48px;height:48px;border:2px solid #4ade80;display:flex;align-items:center;justify-content:center;font-size:20px;">💰</div>
+      <div class="proj-bg" style="background:linear-gradient(135deg,#050505 0%,#0a1428 40%,#050505 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:4px;color:#F2FF00;">COMMERCIAL ECOSYSTEM</div>
+        <div style="display:flex;gap:14px;align-items:center;">
+          <div style="width:44px;height:44px;border:2px solid #F2FF00;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:16px;color:#F2FF00;">WEB</div>
+          <div style="color:rgba(255,255,255,.3);font-size:18px;">→</div>
+          <div style="width:44px;height:44px;border:2px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:18px;">⚡</div>
+          <div style="color:rgba(255,255,255,.3);font-size:18px;">→</div>
+          <div style="width:44px;height:44px;border:2px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:18px;">💼</div>
+          <div style="color:rgba(255,255,255,.3);font-size:18px;">→</div>
+          <div style="width:44px;height:44px;border:2px solid #4ade80;display:flex;align-items:center;justify-content:center;font-size:18px;">💰</div>
         </div>
-        <div style="font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.4);">FRAMEWORK · amitai.com</div>
+        <div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.3);">FRAMEWORK · amitai.com</div>
       </div>
       <div class="project-overlay">
         <div class="proj-tag">Digital Strategy · Sales Enablement · SEO · Content Architecture</div>
         <div class="proj-title">AMITAI Web Ecosystem<br>& Commercial Framework</div>
-        <div class="proj-desc">Full rebuild of AMITAI's digital commercial infrastructure — modular page framework, cluster-based product architecture, aligned with the commercial director and sales team. Every page engineered for conversion, SEO authority, and scalable offer structure.</div>
+        <div class="proj-desc">Full rebuild of AMITAI's digital commercial infrastructure — modular cluster framework, aligned with the commercial director and sales team. Every page engineered for conversion and SEO authority.</div>
         <div class="proj-metrics">
           <span class="metric-chip">7 product clusters</span>
           <span class="metric-chip">Sales + Mktg aligned</span>
           <span class="metric-chip">SEO architecture</span>
-          <span class="metric-chip">Framework doc published</span>
         </div>
       </div>
     </div>
 
-    <!-- PROJECT 5 — Content Production -->
+    <!-- PROJECT 5 — Campaign Engine -->
     <div class="project-card">
-      <div style="position:absolute;inset:0;background:var(--card);display:flex;align-items:center;justify-content:center;gap:24px;overflow:hidden;">
-        <div style="position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr);gap:2px;opacity:0.5;">
-          <div style="background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:1px;color:var(--gold);text-align:center;padding:8px;">AMITAI LIVE</div>
-          <div style="background:var(--card-hover);display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,.4);text-align:center;padding:8px;">EMAIL CAMPAIGN</div>
-          <div style="background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,.4);padding:8px;">SOCIAL</div>
-          <div style="background:var(--card);display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,.4);padding:8px;">BANNER</div>
-          <div style="background:var(--card-hover);display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,.4);padding:8px;">EVENT</div>
-          <div style="background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:1px;color:var(--navy);padding:8px;">120/YR</div>
-        </div>
+      <div class="proj-bg" style="background:var(--card);display:grid;grid-template-columns:repeat(6,1fr);gap:2px;opacity:0.55;">
+        <div style="background:#111;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1px;color:#F2FF00;padding:8px;text-align:center;">AMITAI LIVE</div>
+        <div style="background:#0d0d0d;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,.3);text-align:center;padding:8px;">EMAIL</div>
+        <div style="background:#111;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,.3);padding:8px;">SOCIAL</div>
+        <div style="background:#0d0d0d;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,.3);padding:8px;">BANNER</div>
+        <div style="background:#111;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,.3);padding:8px;">EVENT</div>
+        <div style="background:#F2FF00;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1px;color:#050505;padding:8px;">120/YR</div>
       </div>
       <div class="project-overlay">
         <div class="proj-tag">Content Strategy · Campaign Production · CRM · Events</div>
         <div class="proj-title">Multi-Channel Campaign Engine — 120+ Campaigns/Year</div>
-        <div class="proj-desc">End-to-end content and campaign operation: AMITAI LIVE episodes, email marketing (60K+ database), social media, banners, event production (400+ attendees), LinkedIn content, and paid media. Built from 13 to 120 campaigns annually.</div>
+        <div class="proj-desc">End-to-end campaign operation: AMITAI LIVE episodes, email marketing (60K+ database), social media, banners, events (400+ attendees), LinkedIn, paid media. Scaled from 13 to 120 campaigns annually.</div>
         <div class="proj-metrics">
           <span class="metric-chip">60K+ contacts</span>
           <span class="metric-chip">+65% lead-to-close</span>
@@ -849,57 +655,40 @@
   <div class="section-label">Marketing Architecture</div>
   <h2>THE <em>STRATEGY</em><br>BEHIND THE WORK</h2>
   <p class="section-intro">Every project connects to a single commercial thesis: brand authority + digital infrastructure + automated demand generation = sustainable revenue growth.</p>
-
   <div class="strategy-grid">
     <div class="strategy-visual">
       <div class="funnel-wrap">
-        <div class="funnel-stage">
-          <span class="funnel-text">Brand Awareness</span>
-          <span class="funnel-label">Rebrand + SEO + Content</span>
-        </div>
-        <div class="funnel-stage">
-          <span class="funnel-text">Lead Capture</span>
-          <span class="funnel-label">Tools + Landing Pages</span>
-        </div>
-        <div class="funnel-stage">
-          <span class="funnel-text">Nurture & Qualify</span>
-          <span class="funnel-label">HubSpot + Email Sequences</span>
-        </div>
-        <div class="funnel-stage">
-          <span class="funnel-text">Sales Enablement</span>
-          <span class="funnel-label">Offer Framework + Commercial Alignment</span>
-        </div>
-        <div class="funnel-stage">
-          <span class="funnel-text">Close & Retain</span>
-          <span class="funnel-label">CRM + Lifecycle</span>
-        </div>
+        <div class="funnel-stage"><span class="funnel-text">Brand Awareness</span></div>
+        <div class="funnel-stage"><span class="funnel-text">Lead Capture</span></div>
+        <div class="funnel-stage"><span class="funnel-text">Nurture & Qualify</span></div>
+        <div class="funnel-stage"><span class="funnel-text">Sales Enablement</span></div>
+        <div class="funnel-stage"><span class="funnel-text">Close & Retain</span></div>
       </div>
-      <div style="margin-top:32px;padding:24px;background:var(--card);border-left:2px solid var(--gold);">
-        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:8px;">KEY PRINCIPLE</div>
-        <div style="font-size:14px;line-height:1.6;color:rgba(255,255,255,.65);">"Build the commercial infrastructure first, then scale with consistent brand. Every digital asset is engineered to convert — not just communicate."</div>
+      <div style="padding:22px 24px;background:var(--card);border-left:3px solid var(--yellow);margin-top:16px;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--yellow);margin-bottom:8px;">KEY PRINCIPLE</div>
+        <div style="font-size:13px;line-height:1.65;color:rgba(255,255,255,.6);">"Build the commercial infrastructure first, then scale with consistent brand. Every digital asset is engineered to convert — not just communicate."</div>
       </div>
     </div>
-
     <div class="strategy-content">
       <div class="strategy-point">
         <div class="sp-num">01 · BRAND AS COMMERCIAL ASSET</div>
         <div class="sp-title">AMITAI Rebrand 2026</div>
-        <div class="sp-body">The rebrand is not cosmetic — it's a positioning reset. New visual identity, tone of voice ("Human Risk Intelligence"), and signage system designed to command premium pricing and reduce objection at first contact. The campaign strategy converts brand launches into pipeline moments.</div>
+        <div class="sp-body">The rebrand is a positioning reset — new visual identity, tone of voice, and signage system designed to command premium pricing and reduce objection at first contact.</div>
       </div>
       <div class="strategy-point">
         <div class="sp-num">02 · DIGITAL INFRASTRUCTURE</div>
         <div class="sp-title">Web Ecosystem + SEO + AEO</div>
-        <div class="sp-body">Rebuilt AMITAI's website architecture using a modular cluster framework — each product cluster has dedicated landing pages, benefit messaging, and SEO metadata. Additionally, Empresas + Éticas was restructured for Answer Engine Optimization, targeting both Google and AI-powered search (ChatGPT, Perplexity, Google SGE).</div>
+        <div class="sp-body">Rebuilt AMITAI's website with a modular cluster framework. Empresas + Éticas restructured for Answer Engine Optimization — targeting Google and AI-powered search engines.</div>
       </div>
       <div class="strategy-point">
         <div class="sp-num">03 · AI-POWERED DEMAND GEN</div>
         <div class="sp-title">Lead Intelligence System</div>
-        <div class="sp-body">Built automated lead scoring and qualification flows using AI + HubSpot workflows. Real-time CRM integration enables sales team to prioritize high-intent leads — directly resulting in a 75% reduction in cost per lead and 65% improvement in lead-to-close conversion.</div>
+        <div class="sp-body">Built automated lead scoring and qualification flows using AI + HubSpot. Real-time CRM integration resulted in 75% reduction in CPL and 65% improvement in lead-to-close conversion.</div>
       </div>
       <div class="strategy-point">
         <div class="sp-num">04 · SALES + MARKETING ALIGNMENT</div>
         <div class="sp-title">Commercial Framework</div>
-        <div class="sp-body">Co-designed the offer architecture and sales methodology with the Commercial Director, ensuring marketing assets directly support each stage of the sales cycle. The result is a unified commercial motion where content, tools, and campaigns work as a pipeline system — not isolated efforts.</div>
+        <div class="sp-body">Co-designed offer architecture and sales methodology with the Commercial Director. A unified commercial motion where content, tools, and campaigns work as a pipeline system.</div>
       </div>
     </div>
   </div>
@@ -911,13 +700,12 @@
 <section id="metrics">
   <div class="section-label">Measurable Impact</div>
   <h2>RESULTS THAT <em>MATTER</em></h2>
-  <p class="section-intro">Real metrics from AMITAI (2023–2026) and ManpowerGroup (2019–2022), with 2026–2028 growth targets based on current roadmap.</p>
-
+  <p class="section-intro">Real metrics from AMITAI (2023–2026) and ManpowerGroup (2019–2022), with 2026–2028 growth targets.</p>
   <div class="metrics-grid">
     <div class="metric-card">
       <div class="metric-big">−75%</div>
       <div class="metric-title">Cost Per Lead</div>
-      <div class="metric-note">Through campaign optimization, AI-powered scoring, and strategic budget reallocation across paid and organic channels.</div>
+      <div class="metric-note">Campaign optimization, AI-powered scoring, and strategic budget reallocation across paid and organic channels.</div>
       <div class="metric-trend">↑ Confirmed · AMITAI 2023–2026</div>
     </div>
     <div class="metric-card">
@@ -929,41 +717,23 @@
     <div class="metric-card">
       <div class="metric-big">120</div>
       <div class="metric-title">Campaigns Per Year</div>
-      <div class="metric-note">Scaled from 13 to 120 campaigns annually — email, social, paid, events, and content — fully automated via HubSpot.</div>
-      <div class="metric-trend">↑ 9x growth · vs 2023 baseline</div>
+      <div class="metric-note">Scaled from 13 to 120 campaigns annually — email, social, paid, events, and content — via HubSpot.</div>
+      <div class="metric-trend">↑ 9× growth · vs 2023 baseline</div>
     </div>
     <div class="metric-card">
       <div class="metric-big">+25%</div>
       <div class="metric-title">Sales Growth</div>
-      <div class="metric-note">Cross-functional alignment between marketing and sales, implementing lead management strategies that improved the full customer journey.</div>
+      <div class="metric-note">Cross-functional alignment between marketing and sales, improving the full customer journey.</div>
       <div class="metric-trend">↑ Confirmed · AMITAI 2023–2025</div>
     </div>
   </div>
-
-  <!-- 2028 Targets -->
-  <div style="background:var(--card);padding:48px;border-left:3px solid var(--gold);">
-    <div class="section-label" style="margin-bottom:32px;">2026 → 2028 Growth Targets</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;">
-      <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--gold);line-height:1;">+45%</div>
-        <div style="font-size:13px;font-weight:500;margin-bottom:6px;">Organic Traffic</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.4);">Via SEO + AEO strategy across AMITAI.com and Empresas + Éticas</div>
-      </div>
-      <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--gold);line-height:1;">3×</div>
-        <div style="font-size:13px;font-weight:500;margin-bottom:6px;">Qualified Leads</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.4);">From web ecosystem + diagnostic tool + campaign volume increase</div>
-      </div>
-      <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--gold);line-height:1;">+30%</div>
-        <div style="font-size:13px;font-weight:500;margin-bottom:6px;">Brand Recall</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.4);">Following rebrand launch campaign and consistent visual presence</div>
-      </div>
-      <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--gold);line-height:1;">100K</div>
-        <div style="font-size:13px;font-weight:500;margin-bottom:6px;">Contact Database</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.4);">CRM growth target: from 60K to 100K active contacts by 2028</div>
-      </div>
+  <div style="background:var(--card);padding:44px 48px;border-left:3px solid var(--yellow);">
+    <div class="section-label" style="margin-bottom:28px;">2026 → 2028 Growth Targets</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:36px;">
+      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--yellow);line-height:1;">+45%</div><div style="font-size:13px;font-weight:600;margin-bottom:4px;">Organic Traffic</div><div style="font-size:11px;color:rgba(255,255,255,.35);">SEO + AEO · AMITAI.com + E+É</div></div>
+      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--yellow);line-height:1;">3×</div><div style="font-size:13px;font-weight:600;margin-bottom:4px;">Qualified Leads</div><div style="font-size:11px;color:rgba(255,255,255,.35);">Web ecosystem + tools + campaign volume</div></div>
+      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--yellow);line-height:1;">+30%</div><div style="font-size:13px;font-weight:600;margin-bottom:4px;">Brand Recall</div><div style="font-size:11px;color:rgba(255,255,255,.35);">Post-rebrand launch campaign</div></div>
+      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--yellow);line-height:1;">100K</div><div style="font-size:13px;font-weight:600;margin-bottom:4px;">Contact Database</div><div style="font-size:11px;color:rgba(255,255,255,.35);">CRM growth: 60K → 100K by 2028</div></div>
     </div>
   </div>
 </section>
@@ -975,56 +745,45 @@
   <div class="section-label">Execution Plan</div>
   <h2>3-YEAR <em>ROADMAP</em></h2>
   <p class="section-intro">A phased approach connecting brand transformation, digital infrastructure, and demand generation into a compounding commercial system.</p>
-
-  <div class="roadmap-track">
-    <div class="roadmap-line"></div>
-    <div class="roadmap-items">
-
-      <div class="rm-item">
-        <div class="rm-dot"></div>
-        <div class="rm-phase">Phase 01 · 2026</div>
-        <div class="rm-title">BRAND RESET &<br>INFRASTRUCTURE</div>
-        <ul class="rm-list">
-          <li>Launch AMITAI rebrand across all touchpoints</li>
-          <li>Deploy full web ecosystem with commercial framework</li>
-          <li>Publish Empresas + Éticas new UX structure</li>
-          <li>Activate lead capture tools (Diagnóstico Express)</li>
-          <li>Align sales + marketing on offer architecture</li>
-          <li>Launch rebrand announcement campaign</li>
-        </ul>
-        <div class="rm-target">Target: +25% organic reach</div>
-      </div>
-
-      <div class="rm-item">
-        <div class="rm-dot"></div>
-        <div class="rm-phase">Phase 02 · 2027</div>
-        <div class="rm-title">DEMAND GEN<br>& SCALE</div>
-        <ul class="rm-list">
-          <li>Scale HubSpot automation to 200+ campaigns/yr</li>
-          <li>Build SEO authority on all product cluster pages</li>
-          <li>Launch paid media strategy (Google + Meta + LinkedIn)</li>
-          <li>Grow database from 60K to 80K contacts</li>
-          <li>Develop industry-specific content verticals</li>
-          <li>Position AMITAI in AI search results (AEO)</li>
-        </ul>
-        <div class="rm-target">Target: 3× qualified leads</div>
-      </div>
-
-      <div class="rm-item">
-        <div class="rm-dot"></div>
-        <div class="rm-phase">Phase 03 · 2028</div>
-        <div class="rm-title">AUTHORITY<br>& RETENTION</div>
-        <ul class="rm-list">
-          <li>Establish AMITAI as top-of-mind in HR Risk LATAM</li>
-          <li>100K active contact database with lifecycle flows</li>
-          <li>Launch thought-leadership content program</li>
-          <li>Expand Empresas + Éticas as brand-awareness vehicle</li>
-          <li>Consolidate recruitment marketing capabilities</li>
-          <li>Full-cycle attribution model across all channels</li>
-        </ul>
-        <div class="rm-target">Target: +40% revenue from mktg</div>
-      </div>
-
+  <div class="roadmap-items">
+    <div class="rm-item">
+      <div class="rm-phase">Phase 01 · 2026</div>
+      <div class="rm-title">BRAND RESET &<br>INFRASTRUCTURE</div>
+      <ul class="rm-list">
+        <li>Launch AMITAI rebrand across all touchpoints</li>
+        <li>Deploy full web ecosystem with commercial framework</li>
+        <li>Publish Empresas + Éticas new UX structure</li>
+        <li>Activate lead capture tools (Diagnóstico Express)</li>
+        <li>Align sales + marketing on offer architecture</li>
+        <li>Launch rebrand announcement campaign</li>
+      </ul>
+      <div class="rm-target">Target: +25% organic reach</div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-phase">Phase 02 · 2027</div>
+      <div class="rm-title">DEMAND GEN<br>& SCALE</div>
+      <ul class="rm-list">
+        <li>Scale HubSpot automation to 200+ campaigns/yr</li>
+        <li>Build SEO authority on all product cluster pages</li>
+        <li>Launch paid media (Google + Meta + LinkedIn)</li>
+        <li>Grow database from 60K to 80K contacts</li>
+        <li>Develop industry-specific content verticals</li>
+        <li>Position AMITAI in AI search results (AEO)</li>
+      </ul>
+      <div class="rm-target" style="border-color:rgba(94,23,235,.4);color:#a78bfa;">Target: 3× qualified leads</div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-phase" style="color:#a78bfa;">Phase 03 · 2028</div>
+      <div class="rm-title">AUTHORITY<br>& RETENTION</div>
+      <ul class="rm-list">
+        <li>Establish AMITAI as top-of-mind in HR Risk LATAM</li>
+        <li>100K active contact database with lifecycle flows</li>
+        <li>Launch thought-leadership content program</li>
+        <li>Expand Empresas + Éticas as brand-awareness vehicle</li>
+        <li>Consolidate recruitment marketing capabilities</li>
+        <li>Full-cycle attribution model across all channels</li>
+      </ul>
+      <div class="rm-target" style="border-color:rgba(94,23,235,.4);color:#a78bfa;">Target: +40% revenue from mktg</div>
     </div>
   </div>
 </section>
@@ -1032,47 +791,32 @@
 <div class="divider"></div>
 
 <!-- MANPOWER -->
-<section id="manpower" style="background:var(--deep);">
+<section id="manpower" style="background:var(--bg2);">
   <div class="section-label">Previous Experience</div>
   <h2>MANPOWERGROUP<br><em>2019 – 2022</em></h2>
-
   <div class="mp-grid">
     <div class="mp-content">
-      <p style="font-size:15px;line-height:1.8;color:rgba(255,255,255,.65);margin-bottom:32px;">As Marketing Analyst at ManpowerGroup México & Centroamérica, contributed to the brand's digital transformation during a critical period — including COVID-era crisis communications, large-scale virtual event production, and CRM-driven campaign execution across the LATAM region.</p>
-      <p style="font-size:15px;line-height:1.8;color:rgba(255,255,255,.65);margin-bottom:40px;">Managed end-to-end HubSpot campaign operations, coordinated 30+ events at top universities (UNAM, Tec de Monterrey, Ibero, Anáhuac), and produced multimedia content for local and international campaigns — directly supporting the rebrand rollout and talent acquisition positioning.</p>
+      <p style="font-size:14px;line-height:1.8;color:rgba(255,255,255,.55);margin-bottom:28px;">As Marketing Analyst at ManpowerGroup México & Centroamérica, contributed to the brand's digital transformation during a critical period — including COVID-era crisis communications, large-scale virtual event production, and CRM-driven campaign execution across the LATAM region.</p>
+      <p style="font-size:14px;line-height:1.8;color:rgba(255,255,255,.55);margin-bottom:36px;">Managed end-to-end HubSpot campaign operations, coordinated 30+ events at top universities (UNAM, Tec de Monterrey, Ibero, Anáhuac), and produced multimedia content for local and international campaigns — supporting the rebrand rollout and talent acquisition positioning.</p>
       <div class="mp-results">
-        <div class="mp-result">
-          <div class="mp-result-num">30+</div>
-          <div class="mp-result-label">Large-scale events coordinated (virtual + in-person)</div>
-        </div>
-        <div class="mp-result">
-          <div class="mp-result-num">5</div>
-          <div class="mp-result-label">Top universities — Tec, UNAM, Ibero, Anáhuac, UVM</div>
-        </div>
-        <div class="mp-result">
-          <div class="mp-result-num">HubSpot</div>
-          <div class="mp-result-label">CRM & automation — segmentation, workflows, reporting</div>
-        </div>
-        <div class="mp-result">
-          <div class="mp-result-num">LATAM</div>
-          <div class="mp-result-label">Regional campaigns, service center optimization</div>
-        </div>
+        <div class="mp-result"><div class="mp-result-num">30+</div><div class="mp-result-label">Large-scale events coordinated</div></div>
+        <div class="mp-result"><div class="mp-result-num">5</div><div class="mp-result-label">Top universities — Tec, UNAM, Ibero, Anáhuac, UVM</div></div>
+        <div class="mp-result"><div class="mp-result-num">HubSpot</div><div class="mp-result-label">CRM & automation — segmentation, workflows, reporting</div></div>
+        <div class="mp-result"><div class="mp-result-num">LATAM</div><div class="mp-result-label">Regional campaigns, service center optimization</div></div>
       </div>
     </div>
-    <div class="mp-visual">
-      <div style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d);padding:60px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:400px;gap:24px;">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:6px;color:#fff;">MANPOWER<br><span style="color:#e8440a;">GROUP</span></div>
-        <div style="width:60px;height:1px;background:rgba(255,255,255,.2);"></div>
-        <div style="font-size:12px;letter-spacing:3px;color:rgba(255,255,255,.4);text-align:center;">MÉXICO & CENTROAMÉRICA<br>2019 – 2022</div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px;">
-          <span style="font-size:10px;letter-spacing:1px;border:1px solid rgba(255,255,255,.15);padding:6px 12px;color:rgba(255,255,255,.5);">HubSpot</span>
-          <span style="font-size:10px;letter-spacing:1px;border:1px solid rgba(255,255,255,.15);padding:6px 12px;color:rgba(255,255,255,.5);">Crisis Comms</span>
-          <span style="font-size:10px;letter-spacing:1px;border:1px solid rgba(255,255,255,.15);padding:6px 12px;color:rgba(255,255,255,.5);">Events</span>
-          <span style="font-size:10px;letter-spacing:1px;border:1px solid rgba(255,255,255,.15);padding:6px 12px;color:rgba(255,255,255,.5);">Rebrand</span>
-          <span style="font-size:10px;letter-spacing:1px;border:1px solid rgba(255,255,255,.15);padding:6px 12px;color:rgba(255,255,255,.5);">LATAM</span>
-        </div>
+    <div style="background:var(--card);padding:52px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;min-height:380px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:5px;text-align:center;">MANPOWER<br><span style="color:#e8440a;">GROUP</span></div>
+      <div style="width:48px;height:1px;background:rgba(255,255,255,.15);"></div>
+      <div style="font-size:11px;letter-spacing:3px;color:rgba(255,255,255,.35);text-align:center;">MÉXICO & CENTROAMÉRICA · 2019–2022</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:6px;">
+        <span style="font-size:9px;letter-spacing:1px;border:1px solid rgba(255,255,255,.12);padding:5px 10px;color:rgba(255,255,255,.4);">HubSpot</span>
+        <span style="font-size:9px;letter-spacing:1px;border:1px solid rgba(255,255,255,.12);padding:5px 10px;color:rgba(255,255,255,.4);">Crisis Comms</span>
+        <span style="font-size:9px;letter-spacing:1px;border:1px solid rgba(255,255,255,.12);padding:5px 10px;color:rgba(255,255,255,.4);">Events</span>
+        <span style="font-size:9px;letter-spacing:1px;border:1px solid rgba(255,255,255,.12);padding:5px 10px;color:rgba(255,255,255,.4);">Rebrand</span>
+        <span style="font-size:9px;letter-spacing:1px;border:1px solid rgba(255,255,255,.12);padding:5px 10px;color:rgba(255,255,255,.4);">LATAM</span>
       </div>
-      <div class="mp-tag">Marketing Analyst</div>
+      <a href="https://www.manpowergroup.com.mx/" target="_blank" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.35);text-decoration:none;text-transform:uppercase;margin-top:4px;">manpowergroup.com.mx →</a>
     </div>
   </div>
 </section>
@@ -1083,66 +827,35 @@
 <section id="skills">
   <div class="section-label">Capabilities</div>
   <h2>SKILLS &amp; <em>TOOLS</em></h2>
-
   <div class="skills-layout">
     <div>
       <div class="skill-group">
         <div class="skill-group-title">Core Competencies</div>
-        <div class="skill-bar-wrap">
-          <div class="skill-name">Brand Strategy & Positioning <span>96%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="width:96%;animation-delay:.1s;"></div></div>
-        </div>
-        <div class="skill-bar-wrap">
-          <div class="skill-name">Growth & Demand Generation <span>92%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="width:92%;animation-delay:.2s;"></div></div>
-        </div>
-        <div class="skill-bar-wrap">
-          <div class="skill-name">CRM & Marketing Automation <span>94%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="width:94%;animation-delay:.3s;"></div></div>
-        </div>
-        <div class="skill-bar-wrap">
-          <div class="skill-name">SEO / AEO / Web Strategy <span>88%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="width:88%;animation-delay:.4s;"></div></div>
-        </div>
-        <div class="skill-bar-wrap">
-          <div class="skill-name">Art Direction & Visual Comm <span>95%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="width:95%;animation-delay:.5s;"></div></div>
-        </div>
-        <div class="skill-bar-wrap">
-          <div class="skill-name">AI-Powered Marketing Systems <span>90%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="width:90%;animation-delay:.6s;"></div></div>
-        </div>
+        <div class="skill-bar-wrap"><div class="skill-name">Brand Strategy & Positioning <span>96%</span></div><div class="skill-track"><div class="skill-fill" style="width:96%;animation-delay:.1s;"></div></div></div>
+        <div class="skill-bar-wrap"><div class="skill-name">Growth & Demand Generation <span>92%</span></div><div class="skill-track"><div class="skill-fill" style="width:92%;animation-delay:.2s;"></div></div></div>
+        <div class="skill-bar-wrap"><div class="skill-name">CRM & Marketing Automation <span>94%</span></div><div class="skill-track"><div class="skill-fill" style="width:94%;animation-delay:.3s;"></div></div></div>
+        <div class="skill-bar-wrap"><div class="skill-name">SEO / AEO / Web Strategy <span>88%</span></div><div class="skill-track"><div class="skill-fill" style="width:88%;animation-delay:.4s;"></div></div></div>
+        <div class="skill-bar-wrap"><div class="skill-name">Art Direction & Visual Comm <span>95%</span></div><div class="skill-track"><div class="skill-fill" style="width:95%;animation-delay:.5s;"></div></div></div>
+        <div class="skill-bar-wrap"><div class="skill-name">AI-Powered Marketing Systems <span>90%</span></div><div class="skill-track"><div class="skill-fill" style="width:90%;animation-delay:.6s;"></div></div></div>
       </div>
     </div>
-
     <div>
       <div class="skill-group">
         <div class="skill-group-title">Tools & Platforms</div>
         <div class="tools-grid">
-          <span class="tool-tag">HubSpot</span>
-          <span class="tool-tag">Google Analytics</span>
-          <span class="tool-tag">Google Ads</span>
-          <span class="tool-tag">Meta Ads</span>
-          <span class="tool-tag">WordPress</span>
-          <span class="tool-tag">Adobe Creative Suite</span>
-          <span class="tool-tag">Canva Pro</span>
-          <span class="tool-tag">Netlify</span>
-          <span class="tool-tag">Semrush / Ahrefs</span>
-          <span class="tool-tag">Zoom / Teams / YT Live</span>
-          <span class="tool-tag">AI Marketing Platforms</span>
-          <span class="tool-tag">Microsoft Office</span>
+          <span class="tool-tag">HubSpot</span><span class="tool-tag">Google Analytics</span><span class="tool-tag">Google Ads</span><span class="tool-tag">Meta Ads</span><span class="tool-tag">WordPress</span><span class="tool-tag">Adobe Creative Suite</span><span class="tool-tag">Canva Pro</span><span class="tool-tag">Netlify</span><span class="tool-tag">Semrush / Ahrefs</span><span class="tool-tag">Zoom / Teams / YT Live</span><span class="tool-tag">AI Marketing Platforms</span><span class="tool-tag">Microsoft Office</span>
         </div>
       </div>
-      <div class="skill-group" style="margin-top:32px;">
+      <div class="skill-group" style="margin-top:28px;">
         <div class="skill-group-title">Certifications</div>
         <div class="tools-grid">
-          <span class="tool-tag" style="color:var(--gold);border-color:rgba(214,179,106,.28);">Google Digital Marketing</span>
-          <span class="tool-tag" style="color:var(--gold);border-color:rgba(214,179,106,.28);">HubSpot Email Certified</span>
-          <span class="tool-tag" style="color:var(--gold);border-color:rgba(214,179,106,.28);">HubSpot Inbound Expert</span>
-          <span class="tool-tag" style="color:var(--gold);border-color:rgba(214,179,106,.28);">Google Analytics</span>
-          <span class="tool-tag" style="color:var(--gold);border-color:rgba(214,179,106,.28);">Agile Leadership · U Colorado</span>
-          <span class="tool-tag" style="color:var(--gold);border-color:rgba(214,179,106,.28);">MBA · UVM (2023–2025)</span>
-          <span class="tool-tag" style="color:var(--gold);border-color:rgba(214,179,106,.28);">TOEFL ITP · English 95%</span>
+          <span class="tool-tag" style="color:var(--yellow);border-color:var(--border);">Google Digital Marketing</span>
+          <span class="tool-tag" style="color:var(--yellow);border-color:var(--border);">HubSpot Email Certified</span>
+          <span class="tool-tag" style="color:var(--yellow);border-color:var(--border);">HubSpot Inbound Expert</span>
+          <span class="tool-tag" style="color:var(--yellow);border-color:var(--border);">Google Analytics</span>
+          <span class="tool-tag" style="color:var(--yellow);border-color:var(--border);">Agile Leadership · U Colorado</span>
+          <span class="tool-tag" style="color:var(--yellow);border-color:var(--border);">MBA · UVM (2023–2025)</span>
+          <span class="tool-tag" style="color:var(--yellow);border-color:var(--border);">TOEFL ITP · English 95%</span>
         </div>
       </div>
     </div>
@@ -1151,104 +864,87 @@
 
 <div class="divider"></div>
 
-<!-- ECOSYSTEM LINKS -->
-<section id="ecosystem" style="background:var(--deep);">
+<!-- ECOSYSTEM -->
+<section id="ecosystem" style="background:var(--bg2);">
   <div class="section-label">Live Work</div>
   <h2>THE <em>ECOSYSTEM</em></h2>
-  <p class="section-intro">Every link below is a live deliverable — from the brand's digital home to lead generation tools to the creative studio behind it all.</p>
-
+  <p class="section-intro">Every link below is a live deliverable — from the brand's digital home to lead generation tools to the creative studio.</p>
   <div class="eco-grid">
     <div class="eco-card">
       <div class="eco-icon">🌐</div>
       <div class="eco-title">AMITAI.COM</div>
-      <div class="eco-body">Full commercial website — rebuilt with modular cluster architecture, product pages, SEO infrastructure, and conversion-optimized landing pages. Co-designed with commercial director and sales team.</div>
-      <a href="https://www.amitai.com/es/frame-work-web-amitai/" target="_blank" class="eco-link">View Framework Doc <span class="eco-arrow">→</span></a>
+      <div class="eco-body">Full commercial website rebuilt with modular cluster architecture, product pages, SEO infrastructure, and conversion-optimized landing pages.</div>
+      <a href="https://www.amitai.com/es/frame-work-web-amitai/" target="_blank" class="eco-link">View Framework Doc →</a>
     </div>
     <div class="eco-card">
       <div class="eco-icon">🔍</div>
       <div class="eco-title">DIAGNÓSTICO EXPRESS</div>
-      <div class="eco-body">AI-powered lead capture tool deployed on Netlify. 6-question diagnostic that qualifies leads in real time and scores them by risk level — feeding directly to CRM for sales follow-up.</div>
-      <a href="https://diagnosticoamitaiexpress.netlify.app/" target="_blank" class="eco-link">Try the Tool <span class="eco-arrow">→</span></a>
+      <div class="eco-body">AI-powered lead capture tool on Netlify. 6-question diagnostic that qualifies leads in real time and scores them by risk level — feeding directly to CRM.</div>
+      <a href="https://diagnosticoamitaiexpress.netlify.app/" target="_blank" class="eco-link">Try the Tool →</a>
     </div>
     <div class="eco-card">
       <div class="eco-icon">✦</div>
       <div class="eco-title">VERY GOOD GRAPHICS</div>
-      <div class="eco-body">Independent creative studio — branding, graphic design, web, photography, video, and illustration. Demonstrates the full creative range behind the marketing work above.</div>
-      <a href="https://www.verygoodgraphics.mx/" target="_blank" class="eco-link">Visit Studio <span class="eco-arrow">→</span></a>
+      <div class="eco-body">Independent creative studio — branding, graphic design, web, photography, video, and illustration. The creative engine behind the marketing work above.</div>
+      <a href="https://www.verygoodgraphics.mx/" target="_blank" class="eco-link">Visit Studio →</a>
     </div>
     <div class="eco-card">
       <div class="eco-icon">🎨</div>
       <div class="eco-title">BEHANCE PORTFOLIO</div>
-      <div class="eco-body">Visual work archive — brand projects, campaign assets, graphic design, and creative direction case studies. Full creative output documentation since 2018.</div>
-      <a href="https://www.behance.net/juanpalaogarcia" target="_blank" class="eco-link">View on Behance <span class="eco-arrow">→</span></a>
+      <div class="eco-body">Visual work archive — brand projects, campaign assets, graphic design, and creative direction case studies. Full creative output since 2018.</div>
+      <a href="https://www.behance.net/juanpalaogarcia" target="_blank" class="eco-link">View on Behance →</a>
     </div>
     <div class="eco-card">
-      <div class="eco-icon">🏢</div>
-      <div class="eco-title">EMPRESAS + ÉTICAS</div>
-      <div class="eco-body">Web redesign for ethical business platform — new UX structure, responsive design, clear information hierarchy, and AEO optimization for AI-powered search engine visibility.</div>
-      <a href="https://www.manpowergroup.com.mx/" target="_blank" class="eco-link">ManpowerGroup Context <span class="eco-arrow">→</span></a>
+      <div class="eco-icon">📡</div>
+      <div class="eco-title">AMITAI LATAM CHANNELS</div>
+      <div class="eco-body">All active AMITAI social media channels — LinkedIn, Facebook, Instagram, YouTube. AMITAI LIVE series and Empresas + Éticas content distribution.</div>
+      <a href="https://linktr.ee/AMITAILAT" target="_blank" class="eco-link">View All Channels →</a>
     </div>
     <div class="eco-card">
       <div class="eco-icon">💼</div>
-      <div class="eco-title">PERSONAL SITE</div>
-      <div class="eco-body">Full portfolio at juanpalaogarcia.com — comprehensive project documentation including Very Good Graphics creative work and brand projects beyond what's shown here.</div>
-      <a href="https://juanpalaogarcia.com/very-good-graphics/" target="_blank" class="eco-link">Full Portfolio <span class="eco-arrow">→</span></a>
+      <div class="eco-title">PERSONAL PORTFOLIO</div>
+      <div class="eco-body">Full portfolio at juanpalaogarcia.com — comprehensive project documentation including Very Good Graphics creative work and brand projects.</div>
+      <a href="https://juanpalaogarcia.com/very-good-graphics/" target="_blank" class="eco-link">Full Portfolio →</a>
     </div>
   </div>
 </section>
 
-
 <div class="divider"></div>
 
-<!-- SOCIAL MEDIA -->
+<!-- SOCIAL -->
 <section id="socials">
   <div class="section-label">Social Media Ecosystem</div>
   <h2>SOCIAL CHANNELS<br><em>MANAGED</em></h2>
-  <p class="section-intro">A practical view of the brand ecosystems currently managed and the corporate channels previously handled across employer branding, recruitment marketing, events, CRM campaigns, and content distribution.</p>
-
+  <p class="section-intro">Brand ecosystems currently managed and previously handled — across employer branding, recruitment marketing, events, CRM campaigns, and content distribution.</p>
   <div class="socials-layout">
     <div class="social-block">
       <div class="social-status">Currently Managing</div>
       <div class="social-title">AMITAI LATAM<br>CONTENT ECOSYSTEM</div>
-      <p class="social-copy">Current administration of AMITAI's digital communication ecosystem across social platforms, campaign content, lead generation assets, webinars, brand initiatives, and commercial content aligned with the Human Risk Intelligence positioning.</p>
-
+      <p class="social-copy">Administration of AMITAI's digital communication ecosystem across social platforms, campaign content, lead generation assets, webinars, brand initiatives, and commercial content aligned with the Human Risk Intelligence positioning.</p>
       <div class="social-chips">
-        <span class="social-chip is-gold">LinkedIn</span>
-        <span class="social-chip is-gold">Facebook</span>
-        <span class="social-chip is-gold">Instagram</span>
-        <span class="social-chip is-gold">YouTube</span>
+        <span class="social-chip is-yellow">LinkedIn</span>
+        <span class="social-chip is-yellow">Facebook</span>
+        <span class="social-chip is-yellow">Instagram</span>
+        <span class="social-chip is-yellow">YouTube</span>
         <span class="social-chip">AMITAI LIVE</span>
         <span class="social-chip">Empresas + Éticas</span>
-        <span class="social-chip">Campaign Distribution</span>
         <span class="social-chip">B2B Content</span>
+        <span class="social-chip">Campaign Distribution</span>
       </div>
-
-      <a href="https://linktr.ee/AMITAILAT" target="_blank" class="social-link">View AMITAI LATAM Channels <span>→</span></a>
-
+      <a href="https://linktr.ee/AMITAILAT" target="_blank" class="social-link">View AMITAI LATAM Channels →</a>
       <div class="social-mini-grid">
-        <div class="social-mini">
-          <div class="social-mini-num">B2B</div>
-          <div class="social-mini-label">Corporate positioning and demand generation content</div>
-        </div>
-        <div class="social-mini">
-          <div class="social-mini-num">LATAM</div>
-          <div class="social-mini-label">Regional communication across Spanish-speaking markets</div>
-        </div>
-        <div class="social-mini">
-          <div class="social-mini-num">360°</div>
-          <div class="social-mini-label">Social, email, web, webinars, campaigns and CRM</div>
-        </div>
+        <div class="social-mini"><div class="social-mini-num">B2B</div><div class="social-mini-label">Corporate positioning & demand gen content</div></div>
+        <div class="social-mini"><div class="social-mini-num">LATAM</div><div class="social-mini-label">Regional communication across Spanish-speaking markets</div></div>
+        <div class="social-mini"><div class="social-mini-num">360°</div><div class="social-mini-label">Social, email, web, webinars, campaigns & CRM</div></div>
       </div>
     </div>
-
     <div class="social-block">
       <div class="social-status">Previously Managed</div>
       <div class="social-title">MANPOWERGROUP<br>DIGITAL CHANNELS</div>
-      <p class="social-copy">Previous administration and campaign support for ManpowerGroup's digital presence, with focus on recruitment marketing, employer branding, university events, crisis communications, campaign execution, and content production during the 2019–2022 period.</p>
-
+      <p class="social-copy">Campaign support for ManpowerGroup's digital presence — recruitment marketing, employer branding, university events, crisis communications, and content production during 2019–2022.</p>
       <div class="social-chips">
-        <span class="social-chip is-gold">ManpowerGroup México</span>
-        <span class="social-chip is-gold">Employer Branding</span>
+        <span class="social-chip is-purple">ManpowerGroup México</span>
+        <span class="social-chip is-purple">Employer Branding</span>
         <span class="social-chip">Recruitment Marketing</span>
         <span class="social-chip">University Events</span>
         <span class="social-chip">HubSpot Campaigns</span>
@@ -1256,32 +952,41 @@
         <span class="social-chip">Regional Campaign Support</span>
         <span class="social-chip">Multimedia Content</span>
       </div>
-
-      <a href="https://www.manpowergroup.com.mx/" target="_blank" class="social-link">View ManpowerGroup Context <span>→</span></a>
-
+      <a href="https://www.manpowergroup.com.mx/" target="_blank" class="social-link">View ManpowerGroup →</a>
       <div class="social-mini-grid">
-        <div class="social-mini">
-          <div class="social-mini-num">30+</div>
-          <div class="social-mini-label">Events and activations coordinated across key universities</div>
-        </div>
-        <div class="social-mini">
-          <div class="social-mini-num">CRM</div>
-          <div class="social-mini-label">HubSpot campaigns, segmentation and reporting support</div>
-        </div>
-        <div class="social-mini">
-          <div class="social-mini-num">MX/CA</div>
-          <div class="social-mini-label">Mexico and Central America communication support</div>
-        </div>
+        <div class="social-mini"><div class="social-mini-num">30+</div><div class="social-mini-label">Events across key universities</div></div>
+        <div class="social-mini"><div class="social-mini-num">CRM</div><div class="social-mini-label">HubSpot campaigns, segmentation & reporting</div></div>
+        <div class="social-mini"><div class="social-mini-num">MX/CA</div><div class="social-mini-label">Mexico and Central America comms</div></div>
       </div>
     </div>
   </div>
 </section>
 
+<div class="divider"></div>
+
+<!-- DOWNLOAD -->
+<section id="download" style="background:var(--bg);">
+  <div class="section-label">CV & Portfolio</div>
+  <div class="download-wrap">
+    <div class="download-left">
+      <div class="download-title">DOWNLOAD MY CV</div>
+      <div class="download-sub">Full resume — Marketing Manager · Brand, Content & Digital Strategy · 2026</div>
+    </div>
+    <a href="https://drive.google.com/file/d/1fnPxJm3P2ppK8V-9jXhs4bBnUmzqVkMg/view?usp=sharing" target="_blank" class="btn-download">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>
+      Download CV (PDF)
+    </a>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
-  <div>
-    <div class="footer-name">JUAN PALAO<span> GARCÍA</span></div>
-    <div style="font-size:12px;color:rgba(255,255,255,.3);margin-top:4px;letter-spacing:1px;">Marketing Manager · Brand, Content & Digital Strategy</div>
+  <div class="footer-logo">
+    <div class="footer-mark">JP</div>
+    <div>
+      <div class="footer-name">JUAN PALAO<span> GARCÍA</span></div>
+      <div style="font-size:10px;color:rgba(255,255,255,.25);margin-top:2px;letter-spacing:1px;">Marketing Manager · Brand, Content & Digital Strategy</div>
+    </div>
   </div>
   <div class="footer-links">
     <a href="https://juanpalaogarcia.com/very-good-graphics/" target="_blank">Portfolio</a>
